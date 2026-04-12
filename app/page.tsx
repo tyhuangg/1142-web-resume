@@ -272,17 +272,147 @@
 //   );
 // }
 
+// "use client"
+
+// import Link from "next/link";
+// import Menu from "@/component/Menu";
+// import { FaFilePdf, FaArrowRight, FaUser } from "react-icons/fa";
+
+// export default function Home() {
+//   const resumePdfUrl = "https://drive.google.com/file/d/1Q5DN6_ey-OBN3qimwkCx7J_2FHNy-ZMb/view"; 
+
+//   return (
+//     <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500">
+      
+//       {/* 左側固定 Menu 區塊 */}
+//       <aside className="w-[280px] flex-shrink-0 h-full">
+//         <Menu />
+//       </aside>
+
+//       {/* 右側主要內容區 */}
+//       <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar">
+//         <div className="max-w-4xl mx-auto px-12 py-20 w-full flex-grow">
+          
+//           {/* Hero Section */}
+//           <header className="mb-20">
+//             <div className="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
+//               Data Analyst Portfolio
+//             </div>
+//             <h1 className="text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight leading-[1.1]">
+//               數據洞察，<br />
+//               引導產品決策與商業成長
+//             </h1>
+//             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
+//               我是 <span className="text-slate-900 dark:text-white font-semibold">Claudia 黃婷筠</span>。目前在 Perfect Corp (玩美移動) 擔任數據管理實習生。
+//               我擅長透過 SQL 與 Python 進行用戶行為路徑分析，將碎片化的數據轉化為可執行的產品優化策略。
+//             </p>
+//           </header>
+
+//           {/* 數據實力展示卡片 - 修正深色模式背景與文字 */}
+//           <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+//             <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all">
+//               <div className="text-3xl font-black text-blue-600 dark:text-blue-500 mb-2">3+</div>
+//               <div className="text-sm font-bold text-slate-800 dark:text-slate-100">跨領域實習經驗</div>
+//               <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-normal">
+//                 具備人壽、廣告媒體與美妝科技的多元商業視角，擅長跨部門溝通。
+//               </p>
+//             </div>
+//             <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all">
+//               <div className="text-3xl font-black text-blue-600 dark:text-blue-500 mb-2">Advanced</div>
+//               <div className="text-sm font-bold text-slate-800 dark:text-slate-100">SQL / Python</div>
+//               <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-normal">
+//                 精通資料清洗、統計分析與行為路徑建模，將數據轉化為成長動能。
+//               </p>
+//             </div>
+//             <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all">
+//               <div className="text-3xl font-black text-blue-600 dark:text-blue-500 mb-2">Visual</div>
+//               <div className="text-sm font-bold text-slate-800 dark:text-slate-100">視覺化洞察</div>
+//               <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-normal">
+//                 熟練使用 Tableau 與 BI 工具，以直觀圖表呈現數據故事，驅動精準決策。
+//               </p>
+//             </div>
+//           </section>
+
+//           {/* 工作動態摘要 - 修正深色模式卡片與條列文字 */}
+//           <section className="mb-24">
+//             <h2 className="text-sm font-bold text-slate-400 dark:text-slate-500 mb-8 flex items-center uppercase tracking-widest">
+//               <span className="w-12 h-px bg-slate-200 dark:bg-slate-800 mr-4"></span>
+//               Current Experience
+//             </h2>
+//             <div className="bg-white dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 rounded-3xl p-10">
+//               <div className="flex justify-between items-start mb-6">
+//                 <div>
+//                   <h3 className="text-2xl font-bold text-slate-800 dark:text-white">玩美移動 Perfect Corp</h3>
+//                   <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm">Data Management Intern</p>
+//                 </div>
+//                 <span className="text-xs font-medium text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-900/50 px-3 py-1 rounded-full border border-slate-100 dark:border-slate-800">2026.03 - Present</span>
+//               </div>
+//               <ul className="space-y-4">
+//                 <li className="flex items-start text-slate-600 dark:text-slate-400">
+//                   <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+//                   <p className="text-sm leading-relaxed">分析 AI 影像修復與物件移除功能之用戶轉換路徑，協助優化產品 UI/UX 決策。</p>
+//                 </li>
+//                 <li className="flex items-start text-slate-600 dark:text-slate-400">
+//                   <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+//                   <p className="text-sm leading-relaxed">監測全球產品使用趨勢，並撰寫數據亮點報告供 Business Development 團隊參考。</p>
+//                 </li>
+//               </ul>
+//             </div>
+//           </section>
+
+//           {/* 底部導引按鈕區 - 移除 shadow-xl 並修正邊框與背景 */}
+//           <section className="pt-12 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-4 items-center mb-10">
+//             {/* 1. 電子履歷 */}
+//             <a 
+//               href={"https://drive.google.com/file/d/1Q5DN6_ey-OBN3qimwkCx7J_2FHNy-ZMb/view?usp=sharing"} 
+//               target="_blank" 
+//               rel="noopener noreferrer"
+//               className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all flex items-center group"
+//             >
+//               <FaFilePdf className="mr-3 text-lg" />
+//               檢視電子履歷 (PDF)
+//             </a>
+
+//             {/* 2. 數據作品集 - 深色模式下反轉為白底黑字 */}
+//             <Link 
+//               href="/projects/data" 
+//               className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-xl hover:bg-slate-800 dark:hover:bg-slate-100 transition-all flex items-center group"
+//             >
+//               探索數據作品集
+//               <FaArrowRight className="ml-3 text-xs opacity-70 group-hover:translate-x-1 transition-transform" />
+//             </Link>
+
+//             {/* 3. 關於我 */}
+//             <Link 
+//               href="/about" 
+//               className="px-8 py-4 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-bold rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center"
+//             >
+//               <FaUser className="mr-3 text-xs opacity-70" />
+//               更多關於我
+//             </Link>
+//           </section>
+
+//         </div>
+//       </main>
+//     </div>
+//   );
+// }
+
 "use client"
 
 import Link from "next/link";
 import Menu from "@/component/Menu";
 import { FaFilePdf, FaArrowRight, FaUser } from "react-icons/fa";
+import { useLang } from "@/component/LanguageProvider";
+import { translations } from "@/component/languageData";
 
 export default function Home() {
+  const { lang } = useLang();
+  const t = translations[lang as keyof typeof translations].home;
   const resumePdfUrl = "https://drive.google.com/file/d/1Q5DN6_ey-OBN3qimwkCx7J_2FHNy-ZMb/view"; 
 
   return (
-    <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500">
+    <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500 font-sans">
       
       {/* 左側固定 Menu 區塊 */}
       <aside className="w-[280px] flex-shrink-0 h-full">
@@ -296,73 +426,71 @@ export default function Home() {
           {/* Hero Section */}
           <header className="mb-20">
             <div className="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
-              Data Analyst Portfolio
+              {t.tag}
             </div>
             <h1 className="text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight leading-[1.1]">
-              數據洞察，<br />
-              引導產品決策與商業成長
+              {t.title_part1}<br />
+              {t.title_part2}
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
-              我是 <span className="text-slate-900 dark:text-white font-semibold">Claudia 黃婷筠</span>。目前在 Perfect Corp (玩美移動) 擔任數據管理實習生。
-              我擅長透過 SQL 與 Python 進行用戶行為路徑分析，將碎片化的數據轉化為可執行的產品優化策略。
+              {t.intro_p1}<span className="text-slate-900 dark:text-white font-semibold">{t.intro_name}</span>{t.intro_p2}
             </p>
           </header>
 
-          {/* 數據實力展示卡片 - 修正深色模式背景與文字 */}
+          {/* 數據實力展示卡片 */}
           <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
             <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all">
-              <div className="text-3xl font-black text-blue-600 dark:text-blue-500 mb-2">3+</div>
-              <div className="text-sm font-bold text-slate-800 dark:text-slate-100">跨領域實習經驗</div>
+              <div className="text-3xl font-black text-blue-600 dark:text-blue-500 mb-2">{t.card1_val}</div>
+              <div className="text-sm font-bold text-slate-800 dark:text-slate-100">{t.card1_title}</div>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-normal">
-                具備人壽、廣告媒體與美妝科技的多元商業視角，擅長跨部門溝通。
+                {t.card1_desc}
               </p>
             </div>
             <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all">
-              <div className="text-3xl font-black text-blue-600 dark:text-blue-500 mb-2">Advanced</div>
-              <div className="text-sm font-bold text-slate-800 dark:text-slate-100">SQL / Python</div>
+              <div className="text-3xl font-black text-blue-600 dark:text-blue-500 mb-2">{t.card2_val}</div>
+              <div className="text-sm font-bold text-slate-800 dark:text-slate-100">{t.card2_title}</div>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-normal">
-                精通資料清洗、統計分析與行為路徑建模，將數據轉化為成長動能。
+                {t.card2_desc}
               </p>
             </div>
             <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all">
-              <div className="text-3xl font-black text-blue-600 dark:text-blue-500 mb-2">Visual</div>
-              <div className="text-sm font-bold text-slate-800 dark:text-slate-100">視覺化洞察</div>
+              <div className="text-3xl font-black text-blue-600 dark:text-blue-500 mb-2">{t.card3_val}</div>
+              <div className="text-sm font-bold text-slate-800 dark:text-slate-100">{t.card3_title}</div>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-normal">
-                熟練使用 Tableau 與 BI 工具，以直觀圖表呈現數據故事，驅動精準決策。
+                {t.card3_desc}
               </p>
             </div>
           </section>
 
-          {/* 工作動態摘要 - 修正深色模式卡片與條列文字 */}
+          {/* 工作動態摘要 */}
           <section className="mb-24">
             <h2 className="text-sm font-bold text-slate-400 dark:text-slate-500 mb-8 flex items-center uppercase tracking-widest">
               <span className="w-12 h-px bg-slate-200 dark:bg-slate-800 mr-4"></span>
-              Current Experience
+              {t.exp_title}
             </h2>
             <div className="bg-white dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 rounded-3xl p-10">
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white">玩美移動 Perfect Corp</h3>
-                  <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm">Data Management Intern</p>
+                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white">{t.exp_company}</h3>
+                  <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm">{t.exp_role}</p>
                 </div>
                 <span className="text-xs font-medium text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-900/50 px-3 py-1 rounded-full border border-slate-100 dark:border-slate-800">2026.03 - Present</span>
               </div>
               <ul className="space-y-4">
                 <li className="flex items-start text-slate-600 dark:text-slate-400">
                   <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                  <p className="text-sm leading-relaxed">分析 AI 影像修復與物件移除功能之用戶轉換路徑，協助優化產品 UI/UX 決策。</p>
+                  <p className="text-sm leading-relaxed">{t.exp_point1}</p>
                 </li>
                 <li className="flex items-start text-slate-600 dark:text-slate-400">
                   <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                  <p className="text-sm leading-relaxed">監測全球產品使用趨勢，並撰寫數據亮點報告供 Business Development 團隊參考。</p>
+                  <p className="text-sm leading-relaxed">{t.exp_point2}</p>
                 </li>
               </ul>
             </div>
           </section>
 
-          {/* 底部導引按鈕區 - 移除 shadow-xl 並修正邊框與背景 */}
+          {/* 底部導引按鈕區 */}
           <section className="pt-12 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-4 items-center mb-10">
-            {/* 1. 電子履歷 */}
             <a 
               href={"https://drive.google.com/file/d/1Q5DN6_ey-OBN3qimwkCx7J_2FHNy-ZMb/view?usp=sharing"} 
               target="_blank" 
@@ -370,25 +498,23 @@ export default function Home() {
               className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all flex items-center group"
             >
               <FaFilePdf className="mr-3 text-lg" />
-              檢視電子履歷 (PDF)
+              {t.btn_pdf}
             </a>
 
-            {/* 2. 數據作品集 - 深色模式下反轉為白底黑字 */}
             <Link 
               href="/projects/data" 
               className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-xl hover:bg-slate-800 dark:hover:bg-slate-100 transition-all flex items-center group"
             >
-              探索數據作品集
+              {t.btn_projects}
               <FaArrowRight className="ml-3 text-xs opacity-70 group-hover:translate-x-1 transition-transform" />
             </Link>
 
-            {/* 3. 關於我 */}
             <Link 
               href="/about" 
               className="px-8 py-4 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-bold rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center"
             >
               <FaUser className="mr-3 text-xs opacity-70" />
-              更多關於我
+              {t.btn_about}
             </Link>
           </section>
 

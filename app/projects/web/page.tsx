@@ -262,29 +262,112 @@
 //   );
 // }
 
+// "use client"
+
+// import Menu from "@/component/Menu"
+// import { FaLaptopCode, FaCodeBranch } from "react-icons/fa"
+
+// export default function WebProjects() {
+//   const projects = [
+//     {
+//       title: "OpenNCCU | 產品 UX 優化",
+//       type: "Product Design / UX Research",
+//       tech: ["Figma", "React", "User Testing"],
+//       desc: "重新設計校園全人系統，透過 400+ 份問卷與易用性測試，將雜亂的資訊結構化並轉化為高保真原型。"
+//     },
+//     {
+//       title: "Black Hole Technology",
+//       type: "Web Development",
+//       tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
+//       desc: "使用 Next.js 開發的互動式敘事網站，結合 Framer Motion 打造探索企業 AI 陰謀論的沈浸式體驗。"
+//     }
+//   ];
+
+//   return (
+//     <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500">
+//       {/* 左側固定 Menu */}
+//       <aside className="w-[280px] flex-shrink-0 h-full">
+//         <Menu />
+//       </aside>
+
+//       {/* 右側主要內容區 */}
+//       <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar flex flex-col">
+//         <div className="max-w-4xl mx-auto px-12 py-20 w-full">
+          
+//           <header className="mb-16">
+//             <div className="inline-block px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
+//               Development Portfolio
+//             </div>
+//             <h1 className="text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">
+//               網頁開發與設計
+//             </h1>
+//             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
+//               結合使用者研究與前端技術，打造美觀且具備良好互動體驗的數位產品。
+//             </p>
+//           </header>
+          
+//           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+//             {projects.map((proj, idx) => (
+//               <div 
+//                 key={idx} 
+//                 className="p-8 border border-slate-100 dark:border-slate-800 rounded-3xl bg-white dark:bg-slate-800/30 hover:border-purple-200 dark:hover:border-purple-600 transition-all group"
+//               >
+//                 {/* Icon 容器在深色模式下的切換 */}
+//                 <div className="w-12 h-12 bg-purple-50 dark:bg-purple-900/40 rounded-2xl flex items-center justify-center text-purple-600 dark:text-purple-400 mb-6 group-hover:bg-purple-600 group-hover:text-white dark:group-hover:bg-purple-500 transition-all">
+//                   <FaLaptopCode size={20} />
+//                 </div>
+
+//                 <h2 className="text-xl font-bold text-slate-800 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+//                   {proj.title}
+//                 </h2>
+                
+//                 <p className="text-xs text-purple-600 dark:text-purple-400 font-bold mb-4 uppercase tracking-tighter flex items-center">
+//                   <FaCodeBranch className="mr-2" /> {proj.type}
+//                 </p>
+                
+//                 <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed line-clamp-3">
+//                   {proj.desc}
+//                 </p>
+
+//                 <div className="flex flex-wrap gap-2 pt-6 border-t border-slate-50 dark:border-slate-700/50">
+//                   {proj.tech.map(t => (
+//                     <span 
+//                       key={t} 
+//                       className="text-[9px] bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-300 px-2.5 py-1 rounded font-bold uppercase tracking-wider"
+//                     >
+//                       {t}
+//                     </span>
+//                   ))}
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+          
+//           {/* 底部裝飾性文字 */}
+//           <div className="mt-20 border-t border-slate-50 dark:border-slate-800 pt-8">
+//             <p className="text-[10px] text-slate-400 dark:text-slate-600 uppercase tracking-[0.3em] text-center font-bold">
+//               Design with purpose • Code with passion
+//             </p>
+//           </div>
+//         </div>
+//       </main>
+//     </div>
+//   )
+// }
+
 "use client"
 
 import Menu from "@/component/Menu"
+import { useLang } from "@/component/LanguageProvider"
+import { translations } from "@/component/languageData"
 import { FaLaptopCode, FaCodeBranch } from "react-icons/fa"
 
 export default function WebProjects() {
-  const projects = [
-    {
-      title: "OpenNCCU | 產品 UX 優化",
-      type: "Product Design / UX Research",
-      tech: ["Figma", "React", "User Testing"],
-      desc: "重新設計校園全人系統，透過 400+ 份問卷與易用性測試，將雜亂的資訊結構化並轉化為高保真原型。"
-    },
-    {
-      title: "Black Hole Technology",
-      type: "Web Development",
-      tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
-      desc: "使用 Next.js 開發的互動式敘事網站，結合 Framer Motion 打造探索企業 AI 陰謀論的沈浸式體驗。"
-    }
-  ];
+  const { lang } = useLang();
+  const t = translations[lang as keyof typeof translations].web;
 
   return (
-    <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500">
+    <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500 font-sans">
       {/* 左側固定 Menu */}
       <aside className="w-[280px] flex-shrink-0 h-full">
         <Menu />
@@ -292,27 +375,27 @@ export default function WebProjects() {
 
       {/* 右側主要內容區 */}
       <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar flex flex-col">
-        <div className="max-w-4xl mx-auto px-12 py-20 w-full">
+        <div className="max-w-4xl mx-auto px-12 py-20 w-full flex-grow">
           
           <header className="mb-16">
             <div className="inline-block px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
-              Development Portfolio
+              {t.tag}
             </div>
             <h1 className="text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">
-              網頁開發與設計
+              {t.title}
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
-              結合使用者研究與前端技術，打造美觀且具備良好互動體驗的數位產品。
+              {t.intro}
             </p>
           </header>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((proj, idx) => (
+            {t.items.map((proj: any, idx: number) => (
               <div 
                 key={idx} 
                 className="p-8 border border-slate-100 dark:border-slate-800 rounded-3xl bg-white dark:bg-slate-800/30 hover:border-purple-200 dark:hover:border-purple-600 transition-all group"
               >
-                {/* Icon 容器在深色模式下的切換 */}
+                {/* Icon 容器 */}
                 <div className="w-12 h-12 bg-purple-50 dark:bg-purple-900/40 rounded-2xl flex items-center justify-center text-purple-600 dark:text-purple-400 mb-6 group-hover:bg-purple-600 group-hover:text-white dark:group-hover:bg-purple-500 transition-all">
                   <FaLaptopCode size={20} />
                 </div>
@@ -330,12 +413,12 @@ export default function WebProjects() {
                 </p>
 
                 <div className="flex flex-wrap gap-2 pt-6 border-t border-slate-50 dark:border-slate-700/50">
-                  {proj.tech.map(t => (
+                  {proj.tech.map((t_tech: string) => (
                     <span 
-                      key={t} 
+                      key={t_tech} 
                       className="text-[9px] bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-300 px-2.5 py-1 rounded font-bold uppercase tracking-wider"
                     >
-                      {t}
+                      {t_tech}
                     </span>
                   ))}
                 </div>

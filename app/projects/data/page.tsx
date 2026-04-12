@@ -149,34 +149,114 @@
 // }
 
 
+// "use client"
+// import Menu from "@/component/Menu"
+// import { FaDatabase, FaChartBar, FaBullseye } from "react-icons/fa"
+
+// export default function DataProjects() {
+//   const projects = [
+//     {
+//       title: "IBM x NCCU | AI 詐騙偵測",
+//       category: "Machine Learning / Business Intelligence",
+//       tools: ["Python", "Scikit-learn", "Tableau"],
+//       description: "針對加密貨幣詐騙特徵進行建模，並將分析結果轉化為金融機構的防詐決策建議。",
+//       impact: "識別 15+ 關鍵風險指標"
+//     },
+//     {
+//       title: "清大資科社 | 電商爬蟲數據倉儲",
+//       category: "Data Engineering / ETL",
+//       tools: ["Python", "Pandas", "PostgreSQL"],
+//       description: "建立自動化爬蟲系統採集 60,000+ 筆數據，並執行清洗與標準化儲存。",
+//       impact: "提升數據處理效率 40%"
+//     },
+//     {
+//       title: "UofSC | Netflix 市場競爭分析",
+//       category: "Market Analysis",
+//       tools: ["Excel", "Power BI", "Statistics"],
+//       description: "分析串流平台於北美市場之訂閱成長率與內容投資報酬率。",
+//       impact: "產出國際市場擴張策略建議"
+//     }
+//   ];
+
+//   return (
+//     <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500">
+//       <aside className="w-[280px] flex-shrink-0 h-full">
+//         <Menu />
+//       </aside>
+      
+//       <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-500 custom-scrollbar flex flex-col">
+//         <div className="max-w-4xl mx-auto px-12 py-20 w-full">
+          
+//           <header className="mb-16">
+//             <div className="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
+//               Data Science Portfolio
+//             </div>
+//             <h1 className="text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">
+//               數據分析作品
+//             </h1>
+//             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
+//               專注於商業問題的數據解法，從資料清洗、統計建模到最後的視覺化洞察呈現。
+//             </p>
+//           </header>
+          
+//           <div className="grid grid-cols-1 gap-10">
+//             {projects.map((proj, idx) => (
+//               <div 
+//                 key={idx} 
+//                 className="group relative p-10 bg-slate-50 dark:bg-slate-800/40 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:border-blue-200 dark:hover:border-blue-800"
+//               >
+//                 <div className="flex justify-between items-start mb-8">
+//                   <div className="space-y-2">
+//                     <span className="flex items-center text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-widest">
+//                       <FaChartBar className="mr-2" /> {proj.category}
+//                     </span>
+//                     <h2 className="text-3xl font-bold text-slate-800 dark:text-white mt-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+//                       {proj.title}
+//                     </h2>
+//                   </div>
+//                   <div className="text-right">
+//                     <span className="flex items-center text-xs font-black text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/50 px-4 py-2 rounded-xl">
+//                       <FaBullseye className="mr-2" /> {proj.impact}
+//                     </span>
+//                   </div>
+//                 </div>
+
+//                 <p className="text-slate-600 dark:text-slate-400 mb-10 leading-relaxed text-base">
+//                   {proj.description}
+//                 </p>
+
+//                 <div className="flex flex-wrap gap-3 pt-6 border-t border-slate-200/50 dark:border-slate-700/50">
+//                   {proj.tools.map(tool => (
+//                     <span 
+//                       key={tool} 
+//                       className="px-4 py-1.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-500 dark:text-slate-300 text-[11px] font-bold rounded-lg tracking-wide uppercase"
+//                     >
+//                       {tool}
+//                     </span>
+//                   ))}
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </main>
+//     </div>
+//   )
+// }
+
+
+
+
 "use client"
+
 import Menu from "@/component/Menu"
-import { FaDatabase, FaChartBar, FaBullseye } from "react-icons/fa"
+import { useLang } from "@/component/LanguageProvider"
+import { translations } from "@/component/languageData"
+import { FaChartBar, FaBullseye } from "react-icons/fa"
 
 export default function DataProjects() {
-  const projects = [
-    {
-      title: "IBM x NCCU | AI 詐騙偵測",
-      category: "Machine Learning / Business Intelligence",
-      tools: ["Python", "Scikit-learn", "Tableau"],
-      description: "針對加密貨幣詐騙特徵進行建模，並將分析結果轉化為金融機構的防詐決策建議。",
-      impact: "識別 15+ 關鍵風險指標"
-    },
-    {
-      title: "清大資科社 | 電商爬蟲數據倉儲",
-      category: "Data Engineering / ETL",
-      tools: ["Python", "Pandas", "PostgreSQL"],
-      description: "建立自動化爬蟲系統採集 60,000+ 筆數據，並執行清洗與標準化儲存。",
-      impact: "提升數據處理效率 40%"
-    },
-    {
-      title: "UofSC | Netflix 市場競爭分析",
-      category: "Market Analysis",
-      tools: ["Excel", "Power BI", "Statistics"],
-      description: "分析串流平台於北美市場之訂閱成長率與內容投資報酬率。",
-      impact: "產出國際市場擴張策略建議"
-    }
-  ];
+  const { lang } = useLang();
+  const t = translations[lang as keyof typeof translations].projects;
 
   return (
     <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500">
@@ -189,18 +269,18 @@ export default function DataProjects() {
           
           <header className="mb-16">
             <div className="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
-              Data Science Portfolio
+              {t.data_tag}
             </div>
             <h1 className="text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">
-              數據分析作品
+              {t.data_title}
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
-              專注於商業問題的數據解法，從資料清洗、統計建模到最後的視覺化洞察呈現。
+              {t.data_intro}
             </p>
           </header>
           
           <div className="grid grid-cols-1 gap-10">
-            {projects.map((proj, idx) => (
+            {t.items.map((proj: any, idx: number) => (
               <div 
                 key={idx} 
                 className="group relative p-10 bg-slate-50 dark:bg-slate-800/40 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:border-blue-200 dark:hover:border-blue-800"
@@ -216,7 +296,7 @@ export default function DataProjects() {
                   </div>
                   <div className="text-right">
                     <span className="flex items-center text-xs font-black text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/50 px-4 py-2 rounded-xl">
-                      <FaBullseye className="mr-2" /> {proj.impact}
+                      <FaBullseye className="mr-2" /> {t.impact_label} {proj.impact}
                     </span>
                   </div>
                 </div>
@@ -226,7 +306,7 @@ export default function DataProjects() {
                 </p>
 
                 <div className="flex flex-wrap gap-3 pt-6 border-t border-slate-200/50 dark:border-slate-700/50">
-                  {proj.tools.map(tool => (
+                  {proj.tools.map((tool: string) => (
                     <span 
                       key={tool} 
                       className="px-4 py-1.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-500 dark:text-slate-300 text-[11px] font-bold rounded-lg tracking-wide uppercase"

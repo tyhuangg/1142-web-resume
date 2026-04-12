@@ -78,6 +78,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/component/ThemeProvider";
 import { ThemeToggle } from "@/component/ThemeToggle";
+import { LanguageProvider } from "@/component/LanguageProvider"; // 確保路徑與檔案名稱正確
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -101,9 +102,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* ThemeToggle 放在這裡會出現在所有頁面的右上方 */}
-          <ThemeToggle />
-          {children}
+          <LanguageProvider>
+            <ThemeToggle /> {/* 我們稍後會在這裡加入語言切換按鈕 */}
+            {children}
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
