@@ -323,18 +323,137 @@
 //     </div>
 //   )
 // }
+
+// "use client"
+// import Menu from "@/component/Menu"
+// import { useLang } from "@/component/LanguageProvider"
+// import { translations } from "@/component/languageData"
+// import { FaChartBar, FaBullseye, FaExternalLinkAlt } from "react-icons/fa"
+// import ImageCarousel from "@/component/ImageCarousel"
+
+// export default function DataProjects() {
+//   const { lang } = useLang();
+//   const t = translations[lang as keyof typeof translations].projects;
+
+//   // 1. 定義每個專案的照片與連結 (這段必須放在 return 之前)
+//   const getProjectConfig = (title: string) => {
+//     const upperTitle = title.toUpperCase();
+//     if (upperTitle.includes("IBM")) {
+//       return {
+//         link: "https://github.com/tyhuangg/Fintech_Crypto-Fraud-Detection-Project",
+//         images: ["/4.jpg", "/5.jpg", "/6.jpg", "/7.jpg"] 
+//       };
+//     }
+//     if (upperTitle.includes("清大") || upperTitle.includes("NTHU")) {
+//       return {
+//         link: "", // 拿掉 Canva 連結
+//         images: ["/8.jpg", "/9.jpg", "/10.jpg", "/11.jpg", "/12.jpg", "/13.jpg"]
+//       };
+//     }
+//     return { link: "", images: [] };
+//   };
+
+//   return (
+//     <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500 font-sans">
+//       <aside className="w-[280px] flex-shrink-0 h-full">
+//         <Menu />
+//       </aside>
+      
+//       <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar flex flex-col">
+//         <div className="max-w-4xl mx-auto px-12 py-20 w-full">
+          
+//           <header className="mb-16">
+//             <div className="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
+//               {t.data_tag}
+//             </div>
+//             <h1 className="text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">
+//               {t.data_title}
+//             </h1>
+//           </header>
+          
+//           <div className="grid grid-cols-1 gap-12">
+//             {t.items.map((proj: any, idx: number) => {
+//               const config = getProjectConfig(proj.title);
+              
+//               return (
+//                 <div 
+//                   key={idx} 
+//                   className="group relative p-10 bg-slate-50 dark:bg-slate-800/40 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:border-blue-400 dark:hover:border-blue-800"
+//                 >
+//                   {/* 2. 插入輪播圖組件 */}
+//                   {config.images.length > 0 && (
+//                     <div className="mb-8">
+//                       <ImageCarousel images={config.images} />
+//                     </div>
+//                   )}
+
+//                   <div className="flex justify-between items-start mb-6">
+//                     <div className="space-y-1">
+//                       <span className="flex items-center text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-widest">
+//                         <FaChartBar className="mr-2" /> {proj.category}
+//                       </span>
+                      
+//                       {/* 如果有連結才顯示 a 標籤，否則只顯示標題 */}
+//                       {config.link ? (
+//                         <a href={config.link} target="_blank" rel="noopener noreferrer" className="flex items-center group/link">
+//                           <h2 className="text-3xl font-bold text-slate-800 dark:text-white group-hover/link:text-blue-600 transition-colors">
+//                             {proj.title}
+//                           </h2>
+//                           <FaExternalLinkAlt className="ml-3 text-sm opacity-50 group-hover/link:opacity-100 transition-opacity" />
+//                         </a>
+//                       ) : (
+//                         <h2 className="text-3xl font-bold text-slate-800 dark:text-white">
+//                           {proj.title}
+//                         </h2>
+//                       )}
+//                     </div>
+
+//                     <div className="text-right">
+//                       <span className="flex items-center text-xs font-black text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/50 px-4 py-2 rounded-xl">
+//                         <FaBullseye className="mr-2" /> {t.impact_label} {proj.impact}
+//                       </span>
+//                     </div>
+//                   </div>
+
+//                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base mb-8">
+//                     {proj.description}
+//                   </p>
+
+//                   <div className="flex flex-wrap gap-2 pt-6 border-t border-slate-200/50 dark:border-slate-700/50">
+//                     {proj.tools.map((tool: string) => (
+//                       <span 
+//                         key={tool} 
+//                         className="px-3 py-1 bg-white dark:bg-slate-700 text-slate-500 dark:text-slate-300 text-[10px] font-bold rounded-lg border border-slate-200 dark:border-slate-600 uppercase tracking-wider"
+//                       >
+//                         {tool}
+//                       </span>
+//                     ))}
+//                   </div>
+//                 </div>
+//               );
+//             })}
+//           </div>
+//         </div>
+//       </main>
+//     </div>
+//   )
+// }
+
+
 "use client"
+
 import Menu from "@/component/Menu"
+import Link from "next/link"
 import { useLang } from "@/component/LanguageProvider"
 import { translations } from "@/component/languageData"
-import { FaChartBar, FaBullseye, FaExternalLinkAlt } from "react-icons/fa"
+import { FaChartBar, FaBullseye, FaExternalLinkAlt, FaChevronLeft } from "react-icons/fa"
 import ImageCarousel from "@/component/ImageCarousel"
 
 export default function DataProjects() {
   const { lang } = useLang();
   const t = translations[lang as keyof typeof translations].projects;
 
-  // 1. 定義每個專案的照片與連結 (這段必須放在 return 之前)
+  // 定義每個專案的照片與連結
   const getProjectConfig = (title: string) => {
     const upperTitle = title.toUpperCase();
     if (upperTitle.includes("IBM")) {
@@ -345,7 +464,7 @@ export default function DataProjects() {
     }
     if (upperTitle.includes("清大") || upperTitle.includes("NTHU")) {
       return {
-        link: "", // 拿掉 Canva 連結
+        link: "", 
         images: ["/8.jpg", "/9.jpg", "/10.jpg", "/11.jpg", "/12.jpg", "/13.jpg"]
       };
     }
@@ -354,54 +473,65 @@ export default function DataProjects() {
 
   return (
     <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500 font-sans">
-      <aside className="w-[280px] flex-shrink-0 h-full">
+      
+      {/* 左側 Menu：手機版隱藏 (hidden)，電腦版顯示 (sm:block) */}
+      <aside className="hidden sm:block w-[280px] flex-shrink-0 h-full border-r border-slate-200 dark:border-slate-800">
         <Menu />
       </aside>
       
-      <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar flex flex-col">
-        <div className="max-w-4xl mx-auto px-12 py-20 w-full">
+      <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar relative flex flex-col">
+        
+        {/* 手機版專用返回按鈕 */}
+        <Link 
+          href="/" 
+          className="sm:hidden fixed top-4 left-4 z-50 p-3 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-full shadow-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 active:scale-95 transition-transform"
+        >
+          <FaChevronLeft size={20} />
+        </Link>
+
+        {/* 內距調整：手機版 px-6，電腦版維持 px-12 */}
+        <div className="max-w-4xl mx-auto px-6 sm:px-12 py-16 sm:py-20 w-full">
           
           <header className="mb-16">
             <div className="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
               {t.data_tag}
             </div>
-            <h1 className="text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">
               {t.data_title}
             </h1>
           </header>
           
-          <div className="grid grid-cols-1 gap-12">
+          <div className="flex flex-col gap-10 sm:gap-12">
             {t.items.map((proj: any, idx: number) => {
               const config = getProjectConfig(proj.title);
               
               return (
                 <div 
                   key={idx} 
-                  className="group relative p-10 bg-slate-50 dark:bg-slate-800/40 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:border-blue-400 dark:hover:border-blue-800"
+                  className="group relative p-6 sm:p-10 bg-slate-50 dark:bg-slate-800/40 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:border-blue-400 dark:hover:border-blue-800"
                 >
-                  {/* 2. 插入輪播圖組件 */}
+                  {/* 輪播圖組件 - 手機版適度縮小間距 */}
                   {config.images.length > 0 && (
-                    <div className="mb-8">
+                    <div className="mb-6 sm:mb-8 max-w-2xl mx-auto">
                       <ImageCarousel images={config.images} />
                     </div>
                   )}
 
-                  <div className="flex justify-between items-start mb-6">
+                  <div className="flex flex-col sm:flex-row justify-between items-start mb-6 gap-4">
                     <div className="space-y-1">
                       <span className="flex items-center text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-widest">
                         <FaChartBar className="mr-2" /> {proj.category}
                       </span>
                       
-                      {/* 如果有連結才顯示 a 標籤，否則只顯示標題 */}
                       {config.link ? (
                         <a href={config.link} target="_blank" rel="noopener noreferrer" className="flex items-center group/link">
-                          <h2 className="text-3xl font-bold text-slate-800 dark:text-white group-hover/link:text-blue-600 transition-colors">
+                          <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white group-hover/link:text-blue-600 transition-colors">
                             {proj.title}
                           </h2>
                           <FaExternalLinkAlt className="ml-3 text-sm opacity-50 group-hover/link:opacity-100 transition-opacity" />
                         </a>
                       ) : (
-                        <h2 className="text-3xl font-bold text-slate-800 dark:text-white">
+                        <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white">
                           {proj.title}
                         </h2>
                       )}
@@ -414,7 +544,7 @@ export default function DataProjects() {
                     </div>
                   </div>
 
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base mb-8">
+                  <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
                     {proj.description}
                   </p>
 

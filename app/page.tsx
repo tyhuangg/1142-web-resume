@@ -414,14 +414,14 @@ export default function Home() {
   return (
     <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500 font-sans">
       
-      {/* 左側固定 Menu 區塊 */}
-      <aside className="w-[280px] flex-shrink-0 h-full">
+      {/* 左側 Menu：手機版寬度改為 w-full，電腦版維持 w-[280px] */}
+      <aside className="w-full sm:w-[280px] flex-shrink-0 h-full border-r border-slate-200 dark:border-slate-800">
         <Menu />
       </aside>
 
       {/* 右側主要內容區 */}
-      <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar">
-        <div className="max-w-4xl mx-auto px-12 py-20 w-full flex-grow">
+      <main className="hidden sm:flex flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 custom-scrollbar flex-col">
+          <div className="max-w-4xl mx-auto px-12 py-20 w-full flex-grow">
           
           {/* Hero Section */}
           <header className="mb-20">

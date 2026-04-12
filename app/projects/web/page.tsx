@@ -610,12 +610,132 @@
 //   )
 // }
 
+// "use client"
+
+// import Menu from "@/component/Menu"
+// import { useLang } from "@/component/LanguageProvider"
+// import { translations } from "@/component/languageData"
+// import { FaLaptopCode, FaExternalLinkAlt, FaGithub, FaShieldAlt, FaYoutube } from "react-icons/fa"
+
+// export default function WebProjects() {
+//   const { lang } = useLang();
+//   const t = translations[lang as keyof typeof translations].web;
+
+//   // 連結分配邏輯
+//   const getWebLink = (title: string) => {
+//     const lowerTitle = title.toLowerCase();
+//     if (lowerTitle.includes("17th")) return "https://dct-17th-official.vercel.app/";
+//     if (lowerTitle.includes("公館") || lowerTitle.includes("roundabout")) return "https://github.com/tyhuangg/js-project-Gongguan-roundabout";
+//     if (lowerTitle.includes("資安") || lowerTitle.includes("cowrie")) return "https://github.com/LuDanielPoyu/Cowrie-Log-Helper";
+//     return "#";
+//   };
+
+//   return (
+//     <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500 font-sans">
+//       <aside className="w-[280px] flex-shrink-0 h-full">
+//         <Menu />
+//       </aside>
+
+//       <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar">
+//         <div className="max-w-4xl mx-auto px-12 py-20 w-full">
+          
+//           <header className="mb-16">
+//             <div className="inline-block px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
+//               {t.tag}
+//             </div>
+//             <h1 className="text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">
+//               {t.title}
+//             </h1>
+//             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
+//               {t.intro}
+//             </p>
+//           </header>
+          
+//           <div className="grid grid-cols-1 gap-16">
+//             {t.items.map((proj: any, idx: number) => {
+//               const lowerTitle = proj.title.toLowerCase();
+//               const isDCT = lowerTitle.includes("17th");
+//               const isGame = lowerTitle.includes("公館") || lowerTitle.includes("roundabout");
+
+//               return (
+//                 <div 
+//                   key={idx} 
+//                   className="group relative p-10 border border-slate-100 dark:border-slate-800 rounded-[2rem] bg-white dark:bg-slate-800/30 transition-all"
+//                 >
+//                   {/* --- 多媒體展示區 --- */}
+//                   <div className="mb-8 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-sm bg-slate-50 dark:bg-slate-900">
+//                     {/* 1. DCT 17th: 直接內嵌網站介面 */}
+//                     {isDCT && (
+//                       <div className="relative w-full h-[400px]">
+//                         <iframe 
+//                           src="https://dct-17th-official.vercel.app/" 
+//                           className="w-full h-full border-0"
+//                           title="DCT 17th Live Demo"
+//                           loading="lazy"
+//                         ></iframe>
+//                       </div>
+//                     )}
+
+//                     {/* 2. 公館圓環遊戲: 內嵌 YouTube 影片 */}
+//                     {isGame && (
+//                       <div className="relative w-full aspect-video">
+//                         <iframe 
+//                           className="w-full h-full"
+//                           src="https://www.youtube.com/embed/jCMCI7KFMIc" 
+//                           title="Gongguan Roundabout Game Demo"
+//                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+//                           allowFullScreen
+//                         ></iframe>
+//                       </div>
+//                     )}
+//                   </div>
+
+//                   {/* --- 文字資訊區 --- */}
+//                   <div className="flex justify-between items-start mb-6">
+//                     <div className="w-14 h-14 bg-purple-50 dark:bg-purple-900/40 rounded-2xl flex items-center justify-center text-purple-600 dark:text-purple-400 mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+//                       {isDCT ? <FaLaptopCode size={24} /> : isGame ? <FaYoutube size={24} /> : <FaShieldAlt size={24} />}
+//                     </div>
+//                     <a href={getWebLink(proj.title)} target="_blank" rel="noopener noreferrer">
+//                       <FaExternalLinkAlt className="text-slate-300 hover:text-purple-500 transition-colors cursor-pointer" />
+//                     </a>
+//                   </div>
+
+//                   <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-3 group-hover:text-purple-600 transition-colors duration-300">
+//                     {proj.title}
+//                   </h2>
+                  
+//                   <p className="text-sm text-purple-600 dark:text-purple-400 font-bold mb-6 uppercase tracking-widest">
+//                     {proj.type}
+//                   </p>
+                  
+//                   <p className="text-base text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+//                     {proj.desc}
+//                   </p>
+
+//                   <div className="flex flex-wrap gap-2 pt-6 border-t border-slate-50 dark:border-slate-700/50">
+//                     {proj.tech.map((skill: string) => (
+//                       <span key={skill} className="text-[10px] bg-slate-50 dark:bg-slate-700 text-slate-500 dark:text-slate-300 px-3 py-1.5 rounded-lg font-bold uppercase tracking-wider">{skill}</span>
+//                     ))}
+//                   </div>
+//                 </div>
+//               );
+//             })}
+//           </div>
+//         </div>
+//       </main>
+//     </div>
+//   )
+// }
+
+
+
 "use client"
 
 import Menu from "@/component/Menu"
+import Link from "next/link";
 import { useLang } from "@/component/LanguageProvider"
 import { translations } from "@/component/languageData"
-import { FaLaptopCode, FaExternalLinkAlt, FaGithub, FaShieldAlt, FaYoutube } from "react-icons/fa"
+import { FaLaptopCode, FaExternalLinkAlt, FaGithub, FaShieldAlt, FaYoutube, FaChevronLeft } from "react-icons/fa"
 
 export default function WebProjects() {
   const { lang } = useLang();
@@ -632,26 +752,38 @@ export default function WebProjects() {
 
   return (
     <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500 font-sans">
-      <aside className="w-[280px] flex-shrink-0 h-full">
+      
+      {/* 左側 Menu：手機版隱藏，電腦版顯示 */}
+      <aside className="hidden sm:block w-[280px] flex-shrink-0 h-full border-r border-slate-200 dark:border-slate-800">
         <Menu />
       </aside>
 
-      <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar">
-        <div className="max-w-4xl mx-auto px-12 py-20 w-full">
+      <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar relative">
+        
+        {/* 手機版專用返回按鈕 */}
+        <Link 
+          href="/" 
+          className="sm:hidden fixed top-4 left-4 z-50 p-3 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-full shadow-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 active:scale-95 transition-transform"
+        >
+          <FaChevronLeft size={20} />
+        </Link>
+
+        {/* 內距調整：手機版 px-6，電腦版維持 px-12 */}
+        <div className="max-w-4xl mx-auto px-6 sm:px-12 py-16 sm:py-20 w-full">
           
           <header className="mb-16">
             <div className="inline-block px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
               {t.tag}
             </div>
-            <h1 className="text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight leading-tight">
               {t.title}
             </h1>
-            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
               {t.intro}
             </p>
           </header>
           
-          <div className="grid grid-cols-1 gap-16">
+          <div className="grid grid-cols-1 gap-12 sm:gap-16">
             {t.items.map((proj: any, idx: number) => {
               const lowerTitle = proj.title.toLowerCase();
               const isDCT = lowerTitle.includes("17th");
@@ -660,13 +792,13 @@ export default function WebProjects() {
               return (
                 <div 
                   key={idx} 
-                  className="group relative p-10 border border-slate-100 dark:border-slate-800 rounded-[2rem] bg-white dark:bg-slate-800/30 transition-all"
+                  className="group relative p-6 sm:p-10 border border-slate-100 dark:border-slate-800 rounded-[2rem] bg-white dark:bg-slate-800/30 transition-all shadow-sm hover:shadow-md"
                 >
                   {/* --- 多媒體展示區 --- */}
                   <div className="mb-8 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-sm bg-slate-50 dark:bg-slate-900">
                     {/* 1. DCT 17th: 直接內嵌網站介面 */}
                     {isDCT && (
-                      <div className="relative w-full h-[400px]">
+                      <div className="relative w-full h-[300px] sm:h-[400px]">
                         <iframe 
                           src="https://dct-17th-official.vercel.app/" 
                           className="w-full h-full border-0"
@@ -692,7 +824,7 @@ export default function WebProjects() {
 
                   {/* --- 文字資訊區 --- */}
                   <div className="flex justify-between items-start mb-6">
-                    <div className="w-14 h-14 bg-purple-50 dark:bg-purple-900/40 rounded-2xl flex items-center justify-center text-purple-600 dark:text-purple-400 mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-50 dark:bg-purple-900/40 rounded-xl sm:rounded-2xl flex items-center justify-center text-purple-600 dark:text-purple-400 mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
                       {isDCT ? <FaLaptopCode size={24} /> : isGame ? <FaYoutube size={24} /> : <FaShieldAlt size={24} />}
                     </div>
                     <a href={getWebLink(proj.title)} target="_blank" rel="noopener noreferrer">
@@ -700,21 +832,26 @@ export default function WebProjects() {
                     </a>
                   </div>
 
-                  <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-3 group-hover:text-purple-600 transition-colors duration-300">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white mb-3 group-hover:text-purple-600 transition-colors duration-300">
                     {proj.title}
                   </h2>
                   
-                  <p className="text-sm text-purple-600 dark:text-purple-400 font-bold mb-6 uppercase tracking-widest">
+                  <p className="text-xs sm:text-sm text-purple-600 dark:text-purple-400 font-bold mb-6 uppercase tracking-widest">
                     {proj.type}
                   </p>
                   
-                  <p className="text-base text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                  <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
                     {proj.desc}
                   </p>
 
                   <div className="flex flex-wrap gap-2 pt-6 border-t border-slate-50 dark:border-slate-700/50">
                     {proj.tech.map((skill: string) => (
-                      <span key={skill} className="text-[10px] bg-slate-50 dark:bg-slate-700 text-slate-500 dark:text-slate-300 px-3 py-1.5 rounded-lg font-bold uppercase tracking-wider">{skill}</span>
+                      <span 
+                        key={skill} 
+                        className="text-[9px] sm:text-[10px] bg-slate-50 dark:bg-slate-700 text-slate-500 dark:text-slate-300 px-3 py-1.5 rounded-lg font-bold uppercase tracking-wider border border-transparent dark:border-slate-600"
+                      >
+                        {skill}
+                      </span>
                     ))}
                   </div>
                 </div>
