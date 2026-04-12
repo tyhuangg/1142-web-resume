@@ -174,38 +174,37 @@ body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
-    @apply bg-background text-foreground;
+    /* 淺色模式：白底深灰字 | 深色模式：深藍底亮灰字 */
+    @apply bg-white text-slate-900 transition-colors duration-500 ease-in-out;
   }
-  html {
-    @apply font-sans;
+
+  /* 針對 dark class 的強制設定 */
+  .dark body {
+    @apply bg-slate-900 text-slate-100;
   }
 }
 
-/* 自定義捲動條樣式 */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 4px; /* 寬度極細 */
-}
+@layer components {
+  /* 確保所有標題在深色模式下是全白 */
+  .dark h1, .dark h2, .dark h3, .dark h4 {
+    @apply text-white;
+  }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent; /* 軌道透明 */
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #cbd5e1; /* 捲動軸顏色: slate-300 */
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8; /* 滑鼠移上去變深: slate-400 */
-}
-
-/* 針對 Firefox 的簡易支援 */
-.custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 transparent;
+  /* 自定義捲軸在深色模式下的顏色 */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 dark:bg-slate-700 rounded-full;
+  }
 }
