@@ -128,30 +128,22 @@ export const metadata: Metadata = {
   description: "Data-driven thinker and cross-disciplinary creator.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
+    <html lang="en" suppressHydrationWarning className="h-full">
+      <body className={`${inter.className} h-full`}> {/* 加入 h-full 確保高度撐滿 */}
+        <ThemeProvider attribute="class" defaultTheme="light">
           <LanguageProvider>
-            {/* 修正重點：在這裡包一層 div 並設定手機版隱藏 */}
+            {/* 電腦版才顯示切換按鈕，避免擠壓手機版空間 */}
             <div className="hidden sm:block">
               <ThemeToggle />
             </div>
             
+            {/* 這裡直接放 children，不要包任何帶有 padding 或 margin 的 div */}
             {children}
           </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
   );
-}
+}   

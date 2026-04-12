@@ -769,7 +769,7 @@ export default function Menu() {
   ];
 
   return (
-    <div className="w-[280px] h-full bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 p-6 border-r border-slate-200 dark:border-slate-800 flex flex-col font-sans transition-colors duration-500">
+    <div className="h-full bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 p-6 border-r border-slate-200 dark:border-slate-800 flex flex-col font-sans transition-colors duration-500">
       
       {/* 1. 個人品牌區 */}
       <div className="flex-shrink-0 text-center mb-8 mt-2">
