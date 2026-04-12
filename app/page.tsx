@@ -550,7 +550,6 @@
 //     </div>
 //   );
 // }
-
 "use client"
 
 import Link from "next/link";
@@ -563,25 +562,25 @@ export default function Home() {
   const { lang } = useLang();
   const t = translations[lang as keyof typeof translations].home;
   
-  // PDF 連結
   const resumePdfUrl = "https://drive.google.com/file/d/1Q5DN6_ey-OBN3qimwkCx7J_2FHNy-ZMb/view?usp=sharing"; 
 
   return (
+    // 外層容器強制滿版且不溢出
     <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500 font-sans overflow-hidden">
       
-      {/* 左側 Menu：
-          手機版 (預設): w-full，達成滿版選單入口
-          電腦版 (sm 以上): w-[280px]，固定側邊欄
+      {/* aside 修正：
+        手機版 (預設): w-full 佔滿螢幕寬度，並確保沒有 flex-shrink 導致被擠壓
+        電腦版 (sm:): 回歸 280px 固定寬度
       */}
       <aside className="w-full sm:w-[280px] flex-shrink-0 h-full border-r border-slate-200 dark:border-slate-800">
         <Menu />
       </aside>
 
-      {/* 右側主要內容區：
-          手機版 (預設): hidden，不預覽右側內容，確保選單滿版
-          電腦版 (sm 以上): flex，正常展示內容
+      {/* main 修正：
+        手機版 (預設): hidden 徹底隱藏，不佔據任何右側像素
+        電腦版 (sm:): flex 顯示內容區
       */}
-      <main className="hidden sm:flex flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 custom-scrollbar flex-col transition-all duration-500">
+      <main className="hidden sm:flex flex-col flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 custom-scrollbar transition-all duration-500">
         <div className="max-w-4xl mx-auto px-12 py-20 w-full flex-grow">
           
           {/* Hero Section */}
@@ -598,47 +597,36 @@ export default function Home() {
             </p>
           </header>
 
-          {/* 數據實力展示卡片 */}
+          {/* 數據卡片 */}
           <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-            <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all shadow-sm">
+            <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all">
               <div className="text-3xl font-black text-blue-600 dark:text-blue-500 mb-2">{t.card1_val}</div>
               <div className="text-sm font-bold text-slate-800 dark:text-slate-100">{t.card1_title}</div>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-normal">
-                {t.card1_desc}
-              </p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-normal">{t.card1_desc}</p>
             </div>
-            <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all shadow-sm">
+            <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all">
               <div className="text-3xl font-black text-blue-600 dark:text-blue-500 mb-2">{t.card2_val}</div>
               <div className="text-sm font-bold text-slate-800 dark:text-slate-100">{t.card2_title}</div>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-normal">
-                {t.card2_desc}
-              </p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-normal">{t.card2_desc}</p>
             </div>
-            <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all shadow-sm">
+            <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all">
               <div className="text-3xl font-black text-blue-600 dark:text-blue-500 mb-2">{t.card3_val}</div>
               <div className="text-sm font-bold text-slate-800 dark:text-slate-100">{t.card3_title}</div>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-normal">
-                {t.card3_desc}
-              </p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-normal">{t.card3_desc}</p>
             </div>
           </section>
 
-          {/* 工作動態摘要 - 背景圖 Hover 與打字機效果 */}
+          {/* 工作經歷區塊 */}
           <section className="mb-24">
             <h2 className="text-sm font-bold text-slate-400 dark:text-slate-500 mb-8 flex items-center uppercase tracking-widest">
               <span className="w-12 h-px bg-slate-200 dark:bg-slate-800 mr-4"></span>
               {t.exp_title}
             </h2>
-            
             <div className="group relative bg-white dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 rounded-3xl p-10 overflow-hidden transition-all duration-500">
-              
-              {/* 背景圖片層：10% 透明度 */}
               <div 
                 className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 bg-cover bg-center pointer-events-none"
                 style={{ backgroundImage: "url('/perfectcorp.jpg')" }}
               ></div>
-
-              {/* 內容層 */}
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-6">
                   <div>
@@ -649,7 +637,6 @@ export default function Home() {
                     2026.03 - Present
                   </span>
                 </div>
-
                 <ul className="space-y-4">
                   <li className="flex items-start text-slate-600 dark:text-slate-400">
                     <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-4 flex-shrink-0"></div>
@@ -662,10 +649,7 @@ export default function Home() {
                   <li className="flex items-start text-slate-600 dark:text-slate-400">
                     <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-4 flex-shrink-0"></div>
                     <div className="overflow-hidden">
-                      <p 
-                        className="text-sm leading-relaxed whitespace-nowrap overflow-hidden w-0 group-hover:w-full group-hover:animate-typewriter border-r-2 border-transparent group-hover:border-blue-500 transition-all duration-500"
-                        style={{ animationDelay: '1.5s' }}
-                      >
+                      <p className="text-sm leading-relaxed whitespace-nowrap overflow-hidden w-0 group-hover:w-full group-hover:animate-typewriter border-r-2 border-transparent group-hover:border-blue-500 transition-all duration-500" style={{ animationDelay: '1.5s' }}>
                         {t.exp_point2}
                       </p>
                     </div>
@@ -675,35 +659,15 @@ export default function Home() {
             </div>
           </section>
 
-          {/* 底部導引按鈕區 */}
+          {/* 底部導引 */}
           <section className="pt-12 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-4 items-center mb-10">
-            <a 
-              href={resumePdfUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all flex items-center group shadow-lg shadow-blue-500/20 active:scale-95"
-            >
-              <FaFilePdf className="mr-3 text-lg" />
-              {t.btn_pdf}
+            <a href={resumePdfUrl} target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all flex items-center shadow-lg active:scale-95">
+              <FaFilePdf className="mr-3 text-lg" /> {t.btn_pdf}
             </a>
-
-            <Link 
-              href="/projects/data" 
-              className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-xl hover:bg-slate-800 dark:hover:bg-slate-100 transition-all flex items-center group shadow-lg active:scale-95"
-            >
-              {t.btn_projects}
-              <FaArrowRight className="ml-3 text-xs opacity-70 group-hover:translate-x-1 transition-transform" />
-            </Link>
-
-            <Link 
-              href="/about" 
-              className="px-8 py-4 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-bold rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center active:scale-95"
-            >
-              <FaUser className="mr-3 text-xs opacity-70" />
-              {t.btn_about}
+            <Link href="/projects/data" className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-xl hover:bg-slate-800 dark:hover:bg-slate-100 transition-all flex items-center shadow-lg active:scale-95">
+              {t.btn_projects} <FaArrowRight className="ml-3 text-xs" />
             </Link>
           </section>
-
         </div>
       </main>
     </div>
