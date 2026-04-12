@@ -153,7 +153,7 @@ import { FaFilePdf, FaArrowRight, FaUser } from "react-icons/fa";
 
 export default function Home() {
   // 請在此處替換為妳真正的 Google Cloud PDF 連結
-  const resumePdfUrl = "https://your-google-cloud-link-to-resume.pdf"; 
+  const resumePdfUrl = "https://drive.google.com/file/d/1Q5DN6_ey-OBN3qimwkCx7J_2FHNy-ZMb/view"; 
 
   return (
     <div className="flex h-screen w-full bg-white overflow-hidden font-sans">
@@ -238,7 +238,7 @@ export default function Home() {
           <section className="pt-12 border-t border-slate-100 flex flex-wrap gap-4 items-center mb-10">
             {/* 1. 電子履歷 (重點藍色) */}
             <a 
-              href={resumePdfUrl} 
+              href={"https://drive.google.com/file/d/1Q5DN6_ey-OBN3qimwkCx7J_2FHNy-ZMb/view?usp=sharing"} 
               target="_blank" 
               rel="noopener noreferrer"
               className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-xl shadow-blue-100 flex items-center group"

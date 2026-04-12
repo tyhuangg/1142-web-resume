@@ -537,7 +537,7 @@ export default function Menu() {
   const navItems = [
     { href: "/", label: "首頁 Home", icon: FaHome },
     { href: "/about", label: "個人特質 About", icon: FaUserAstronaut },
-    { href: "/experience", label: "履歷經歷 Resume", icon: FaBriefcase },
+    { href: "/resume", label: "履歷經歷 Resume", icon: FaBriefcase },
     { href: "/programming-project", label: "數據作品 Projects", icon: FaDatabase },
   ];
 
