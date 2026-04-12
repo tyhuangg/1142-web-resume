@@ -9,7 +9,20 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+      typewriter: {
+        'from': { width: '0' },
+        'to': { width: '100%' },
+      },
+      blink: {
+        '50%': { borderColor: 'transparent' },
+      },
+    },
+    animation: {
+      typewriter: 'typewriter 2s steps(40) forwards',
+    },
+    },
   },
   plugins: [],
 };

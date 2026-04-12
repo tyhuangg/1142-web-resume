@@ -83,7 +83,8 @@ export const translations = {
             "提取 30,000+ 筆產品數據，建立 Tableau 與 Python 自動化 Dashboard。",
             "規劃 30+ App 埋點優化 User Flow 追蹤，提升分析精準度。",
             "結構化整理 10+ 份競業財報，支援內部商業策略制定。"
-          ]
+          ],
+          bgImg: "/perfectcorp.jpg",  
         },
         {
           company: "國泰人壽資訊策略發展部",
@@ -93,7 +94,8 @@ export const translations = {
           points: [
             "協助數位轉型與 ITSM 導入專案之需求拆解與流程文件撰寫。",
             "透過專案進度追蹤與文件版本管理，降低跨部門協作誤差。"
-          ]
+          ],
+          bgImg: "/cathay.jpg",  
         },
         {
           company: "陽獅集團 Publicis Group",
@@ -103,7 +105,8 @@ export const translations = {
           points: [
             "負責 60,000+ 筆 GA 資料清洗，建立 Looker Studio 行銷看板。",
             "利用 Python 開發自動化工具，減少 40% 以上人為處理時間。"
-          ]
+          ],
+          bgImg: "/publicis.jpg",  
         }
       ],
       projects: [
@@ -245,7 +248,8 @@ export const translations = {
             "Extracted 30,000+ records to build automated Tableau & Python Dashboards.",
             "Planned 30+ App tracking events to optimize user flow analysis.",
             "Structured competitor financial reports to support business strategy."
-          ]
+          ],
+          bgImg: "/perfectcorp.jpg"
         },
         {
           company: "Cathay Life Insurance",
@@ -255,7 +259,8 @@ export const translations = {
           points: [
             "Assisted in digital transformation by detailing requirements.",
             "Optimized cross-department collaboration through version control."
-          ]
+          ],
+          bgImg: "/cathay.jpg"
         },
         {
           company: "Publicis Group",
@@ -265,7 +270,8 @@ export const translations = {
           points: [
             "Cleaned 60,000+ GA records and built Looker Studio dashboards.",
             "Developed Python tools to reduce manual processing time by 40%."
-          ]
+          ],
+          bgImg: "/publicis.jpg"
         }
       ],
       projects: [

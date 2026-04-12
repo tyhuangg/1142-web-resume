@@ -676,6 +676,145 @@
 //     </div>
 //   );
 // }
+// "use client"
+
+// import Menu from "@/component/Menu"
+// import { useLang } from "@/component/LanguageProvider";
+// import { translations } from "@/component/languageData";
+// import { FaGraduationCap, FaBriefcase, FaCode } from "react-icons/fa";
+
+// export default function ResumePage() {
+//   const { lang } = useLang();
+//   const t = translations[lang as keyof typeof translations].resume;
+
+//   return (
+//     <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500">
+      
+//       {/* 左側固定 Menu */}
+//       <aside className="w-[280px] flex-shrink-0 h-full">
+//         <Menu />
+//       </aside>
+
+//       {/* 右側內容區 */}
+//       <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar flex flex-col">
+//         <div className="max-w-4xl mx-auto px-12 py-20 w-full">
+          
+//           {/* 1. Header */}
+//           <header className="mb-16">
+//             <div className="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
+//               {t.tag}
+//             </div>
+//             <h1 className="text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight leading-[1.1]">
+//               {t.title}
+//             </h1>
+//             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
+//               {t.intro}
+//             </p>
+//           </header>
+
+//           {/* 2. 工作經歷 */}
+//           <section className="mb-24">
+//             <h2 className="text-sm font-bold text-slate-400 dark:text-slate-500 mb-10 flex items-center uppercase tracking-widest">
+//               <span className="w-12 h-px bg-slate-200 dark:bg-slate-800 mr-4"></span>
+//               {t.section_work}
+//             </h2>
+            
+//             <div className="space-y-8">
+//               {t.experiences.map((exp: any, idx: number) => (
+//                 <div 
+//                   key={idx} 
+//                   className="group relative p-8 rounded-3xl border border-slate-100 dark:border-slate-800 transition-all duration-500 bg-white dark:bg-slate-800/30 overflow-hidden"
+//                 >
+//                   <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 ${exp.bgClass}`}></div>
+                  
+//                   <div className="flex justify-between items-start mb-4">
+//                     <div>
+//                       <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
+//                         {exp.company}
+//                       </h3>
+//                       <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm mt-1">{exp.role}</p>
+//                     </div>
+//                     <span className="text-xs font-bold text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-900/50 px-3 py-1 rounded-full border border-slate-100 dark:border-slate-800">
+//                       {exp.period}
+//                     </span>
+//                   </div>
+                  
+//                   <ul className="space-y-3">
+//                     {exp.points.map((p: string, i: number) => (
+//                       <li key={i} className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex items-start">
+//                         <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+//                         {p}
+//                       </li>
+//                     ))}
+//                   </ul>
+//                 </div>
+//               ))}
+//             </div>
+//           </section>
+
+//           {/* 3. 專案經歷 */}
+//           <section className="mb-24">
+//             <h2 className="text-sm font-bold text-slate-400 dark:text-slate-500 mb-10 flex items-center uppercase tracking-widest">
+//               <span className="w-12 h-px bg-slate-200 dark:bg-slate-800 mr-4"></span>
+//               {t.section_projects}
+//             </h2>
+//             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//               {t.projects.map((proj: any, idx: number) => (
+//                 <div key={idx} className="p-8 bg-slate-50 dark:bg-slate-800/20 rounded-3xl border border-transparent dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all group">
+//                   <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 group-hover:text-blue-700 dark:group-hover:text-blue-400">
+//                     {proj.title}
+//                   </h3>
+//                   <div className="flex justify-between text-[10px] font-bold text-blue-500 dark:text-blue-400 mb-4 uppercase tracking-wider">
+//                     <span>{proj.role}</span>
+//                     <span className="text-slate-400 dark:text-slate-500">{proj.period}</span>
+//                   </div>
+//                   {proj.points.map((p: string, i: number) => (
+//                     <p key={i} className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{p}</p>
+//                   ))}
+//                 </div>
+//               ))}
+//             </div>
+//           </section>
+
+//           {/* 4. 教育背景 */}
+//           <section className="mb-10">
+//             <h2 className="text-sm font-bold text-slate-400 dark:text-slate-500 mb-10 flex items-center uppercase tracking-widest">
+//               <span className="w-12 h-px bg-slate-200 dark:bg-slate-800 mr-4"></span>
+//               {t.section_edu}
+//             </h2>
+//             <div className="space-y-6">
+//               <div className="flex justify-between items-center p-8 bg-white dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 rounded-3xl transition-all">
+//                 <div>
+//                   <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">國立政治大學 NCCU</h3>
+//                   <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">
+//                     {lang === 'zh' ? '資訊管理學系 & 數位內容與科技學士學程' : 'MIS & Digital Content (Double Major)'}
+//                   </p>
+//                 </div>
+//                 <div className="text-right">
+//                   <span className="text-xs font-bold text-slate-400 dark:text-slate-500">2021 - 2026 Expected</span>
+//                 </div>
+//               </div>
+//               <div className="flex justify-between items-center p-8 bg-white dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 rounded-3xl transition-all">
+//                 <div>
+//                   <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">University of South Carolina</h3>
+//                   <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">
+//                     {lang === 'zh' ? 'Darla Moore Business School 交換學生' : 'Exchange Student at Darla Moore School of Business'}
+//                   </p>
+//                 </div>
+//                 <div className="text-right">
+//                   <span className="text-xs font-bold text-slate-400 dark:text-slate-500">2025.01 - 2025.06</span>
+//                 </div>
+//               </div>
+//             </div>
+//           </section>
+
+//         </div>
+//       </main>
+//     </div>
+//   );
+// }
+
+
 "use client"
 
 import Menu from "@/component/Menu"
@@ -688,7 +827,7 @@ export default function ResumePage() {
   const t = translations[lang as keyof typeof translations].resume;
 
   return (
-    <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500">
+    <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500 font-sans">
       
       {/* 左側固定 Menu */}
       <aside className="w-[280px] flex-shrink-0 h-full">
@@ -712,7 +851,7 @@ export default function ResumePage() {
             </p>
           </header>
 
-          {/* 2. 工作經歷 */}
+          {/* 2. 工作經歷 - 增加 Hover 背景 10% */}
           <section className="mb-24">
             <h2 className="text-sm font-bold text-slate-400 dark:text-slate-500 mb-10 flex items-center uppercase tracking-widest">
               <span className="w-12 h-px bg-slate-200 dark:bg-slate-800 mr-4"></span>
@@ -725,34 +864,41 @@ export default function ResumePage() {
                   key={idx} 
                   className="group relative p-8 rounded-3xl border border-slate-100 dark:border-slate-800 transition-all duration-500 bg-white dark:bg-slate-800/30 overflow-hidden"
                 >
-                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 ${exp.bgClass}`}></div>
-                  
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
-                        {exp.company}
-                      </h3>
-                      <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm mt-1">{exp.role}</p>
+                  {/* 背景圖層：10% 透明度 */}
+                  <div 
+                    className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 bg-cover bg-center pointer-events-none"
+                    style={{ backgroundImage: `url(${exp.bgImg})` }}
+                  ></div>
+
+                  {/* 內容層 */}
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
+                          {exp.company}
+                        </h3>
+                        <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm mt-1">{exp.role}</p>
+                      </div>
+                      <span className="text-xs font-bold text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-900/50 px-3 py-1 rounded-full border border-slate-100 dark:border-slate-800">
+                        {exp.period}
+                      </span>
                     </div>
-                    <span className="text-xs font-bold text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-900/50 px-3 py-1 rounded-full border border-slate-100 dark:border-slate-800">
-                      {exp.period}
-                    </span>
+                    
+                    <ul className="space-y-3">
+                      {exp.points.map((p: string, i: number) => (
+                        <li key={i} className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex items-start">
+                          <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  
-                  <ul className="space-y-3">
-                    {exp.points.map((p: string, i: number) => (
-                      <li key={i} className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex items-start">
-                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* 3. 專案經歷 */}
+          {/* 3. 專案經歷 (保持原樣) */}
           <section className="mb-24">
             <h2 className="text-sm font-bold text-slate-400 dark:text-slate-500 mb-10 flex items-center uppercase tracking-widest">
               <span className="w-12 h-px bg-slate-200 dark:bg-slate-800 mr-4"></span>
@@ -776,33 +922,48 @@ export default function ResumePage() {
             </div>
           </section>
 
-          {/* 4. 教育背景 */}
+          {/* 4. 教育背景 - NCCU & UofSC 加入背景 Hover 10% */}
           <section className="mb-10">
             <h2 className="text-sm font-bold text-slate-400 dark:text-slate-500 mb-10 flex items-center uppercase tracking-widest">
               <span className="w-12 h-px bg-slate-200 dark:bg-slate-800 mr-4"></span>
               {t.section_edu}
             </h2>
             <div className="space-y-6">
-              <div className="flex justify-between items-center p-8 bg-white dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 rounded-3xl transition-all">
-                <div>
-                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">國立政治大學 NCCU</h3>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">
-                    {lang === 'zh' ? '資管系 & 數位內容雙主修' : 'MIS & Digital Content (Double Major)'}
-                  </p>
-                </div>
-                <div className="text-right">
-                  <span className="text-xs font-bold text-slate-400 dark:text-slate-500">2021 - 2026 Expected</span>
+              {/* NCCU */}
+              <div className="group relative p-8 bg-white dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 rounded-3xl overflow-hidden transition-all duration-500">
+                <div 
+                  className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 bg-cover bg-center pointer-events-none"
+                  style={{ backgroundImage: "url('/nccu.jpg')" }}
+                ></div>
+                <div className="relative z-10 flex justify-between items-center">
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">國立政治大學 NCCU</h3>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">
+                      {lang === 'zh' ? '資訊管理學系 & 數位內容與科技學士學程' : 'MIS & Digital Content (Double Major)'}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs font-bold text-slate-400 dark:text-slate-500">2021 - 2026 Expected</span>
+                  </div>
                 </div>
               </div>
-              <div className="flex justify-between items-center p-8 bg-white dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 rounded-3xl transition-all">
-                <div>
-                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">University of South Carolina</h3>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">
-                    {lang === 'zh' ? 'Darla Moore Business School 交換學生' : 'Exchange Student at Darla Moore School of Business'}
-                  </p>
-                </div>
-                <div className="text-right">
-                  <span className="text-xs font-bold text-slate-400 dark:text-slate-500">2025.01 - 2025.06</span>
+
+              {/* UofSC */}
+              <div className="group relative p-8 bg-white dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 rounded-3xl overflow-hidden transition-all duration-500">
+                <div 
+                  className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 bg-cover bg-center pointer-events-none"
+                  style={{ backgroundImage: "url('/uofsc.jpg')" }}
+                ></div>
+                <div className="relative z-10 flex justify-between items-center">
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">University of South Carolina</h3>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">
+                      {lang === 'zh' ? 'Darla Moore Business School 交換學生' : 'Exchange Student at Darla Moore Business School'}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs font-bold text-slate-400 dark:text-slate-500">2025.01 - 2025.06</span>
+                  </div>
                 </div>
               </div>
             </div>

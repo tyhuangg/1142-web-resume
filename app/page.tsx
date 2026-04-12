@@ -462,30 +462,57 @@ export default function Home() {
             </div>
           </section>
 
-          {/* 工作動態摘要 */}
+          {/* 工作動態摘要 - 增加背景圖 Hover 與打字機效果 */}
           <section className="mb-24">
             <h2 className="text-sm font-bold text-slate-400 dark:text-slate-500 mb-8 flex items-center uppercase tracking-widest">
               <span className="w-12 h-px bg-slate-200 dark:bg-slate-800 mr-4"></span>
               {t.exp_title}
             </h2>
-            <div className="bg-white dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 rounded-3xl p-10">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-800 dark:text-white">{t.exp_company}</h3>
-                  <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm">{t.exp_role}</p>
+            
+            {/* 外層加上 group 類別 */}
+            <div className="group relative bg-white dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 rounded-3xl p-10 overflow-hidden transition-all duration-500">
+              
+              {/* 背景圖片層：預設透明度 0，Hover 時變 0.3 */}
+              <div 
+                className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 bg-cover bg-center pointer-events-none"
+                style={{ backgroundImage: "url('/perfectcorp.jpg')" }}
+              ></div>
+
+              {/* 內容層：確保在背景圖之上 */}
+              <div className="relative z-10">
+                <div className="flex justify-between items-start mb-6">
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-800 dark:text-white">{t.exp_company}</h3>
+                    <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm">{t.exp_role}</p>
+                  </div>
+                  <span className="text-xs font-medium text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-900/50 px-3 py-1 rounded-full border border-slate-100 dark:border-slate-800">
+                    2026.03 - Present
+                  </span>
                 </div>
-                <span className="text-xs font-medium text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-900/50 px-3 py-1 rounded-full border border-slate-100 dark:border-slate-800">2026.03 - Present</span>
+
+                <ul className="space-y-4">
+                  <li className="flex items-start text-slate-600 dark:text-slate-400">
+                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                    {/* 動畫觸發層 */}
+                        <div className="overflow-hidden"> 
+                          <p className="text-sm leading-relaxed whitespace-nowrap overflow-hidden w-0 group-hover:w-full group-hover:animate-typewriter border-r-2 border-transparent group-hover:border-blue-500">
+                            {t.exp_point1}
+                          </p>
+                        </div>
+                  </li>
+                 <li className="flex items-start text-slate-600 dark:text-slate-400">
+                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-4 flex-shrink-0"></div>
+                    <div className="overflow-hidden">
+                      <p 
+                        className="text-sm leading-relaxed whitespace-nowrap overflow-hidden w-0 group-hover:w-full group-hover:animate-typewriter border-r-2 border-transparent group-hover:border-blue-500"
+                        style={{ animationDelay: '1.5s' }} // 讓第二行晚點出來
+                      >
+                        {t.exp_point2}
+                      </p>
+                    </div>
+                  </li>
+                </ul>
               </div>
-              <ul className="space-y-4">
-                <li className="flex items-start text-slate-600 dark:text-slate-400">
-                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                  <p className="text-sm leading-relaxed">{t.exp_point1}</p>
-                </li>
-                <li className="flex items-start text-slate-600 dark:text-slate-400">
-                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                  <p className="text-sm leading-relaxed">{t.exp_point2}</p>
-                </li>
-              </ul>
             </div>
           </section>
 
