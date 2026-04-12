@@ -496,11 +496,128 @@
 //   );
 // }
 
+// "use client"
+
+// import Menu from "@/component/Menu"
+// import Link from "next/link"; 
+// import { FaChevronLeft, FaGlobeAmericas, FaMapMarkerAlt, FaQuoteLeft } from "react-icons/fa"; 
+// import { useLang } from "@/component/LanguageProvider"
+// import { translations } from "@/component/languageData"
+
+// export default function AboutPage() {
+//   const { lang } = useLang();
+//   const t = translations[lang as keyof typeof translations].about;
+
+//   const photoData = [
+//     { src: "/a1.jpg", tag: "Sydney, Australia" },
+//     { src: "/a2.jpg", tag: "Sydney, Australia" },
+//     { src: "/a3.JPEG", tag: "Tokyo, Japan" },
+//     { src: "/a4.JPEG", tag: "LA, US" }, 
+//     { src: "/a5.JPEG", tag: "NY, US" },
+//     { src: "/a6.JPEG", tag: "Seoul, South Korea" },
+//     { src: "/a7.JPEG", tag: "Seoul, South Korea" },
+//     { src: "/a8.JPEG", tag: "AT, US" },
+//     { src: "/a9.JPEG", tag: "WA, US" },
+//   ];
+
+//   return (
+//     <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500 font-sans">
+      
+//       {/* 左側 Menu：手機版隱藏 (hidden)，電腦版顯示 (sm:block) */}
+//       <aside className="hidden sm:block w-[280px] flex-shrink-0 h-full border-r border-slate-200 dark:border-slate-800">
+//         <Menu />
+//       </aside>
+
+//       <main className="flex-grow overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar relative">
+        
+//         {/* 手機版專用返回按鈕：只有在 sm 以下顯示 */}
+//         <Link 
+//           href="/" 
+//           className="sm:hidden fixed top-4 left-4 z-50 p-3 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-full shadow-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 active:scale-95 transition-transform"
+//         >
+//           <FaChevronLeft size={20} />
+//         </Link>
+
+//         {/* 內距調整：手機版增加頂部空間給返回按鈕 */}
+//         <div className="max-w-5xl mx-auto px-6 sm:px-12 py-16 sm:py-20 w-full">
+          
+//           {/* Header Section */}
+//           <header className="mb-16">
+//             <div className="inline-flex items-center px-3 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
+//               <FaGlobeAmericas className="mr-2" /> {t.tag}
+//             </div>
+//             <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">
+//               {t.title}
+//             </h1>
+//             <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">
+//               {t.intro}
+//             </p>
+//           </header>
+
+//           {/* 九宮格照片區 */}
+//           <section className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-16">
+//             {photoData.map((item, idx) => {
+//               const isA4 = idx === 3;
+//               return (
+//                 <div 
+//                   key={idx} 
+//                   className="group relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] bg-slate-100 dark:bg-slate-800 transition-all duration-500 hover:shadow-xl aspect-square"
+//                 >
+//                   <img 
+//                     src={item.src} 
+//                     alt={item.tag}
+//                     className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110
+//                       ${isA4 ? "object-left" : "object-center"}
+//                     `}
+//                     style={isA4 ? { objectPosition: '60% center' } : {}} 
+//                   />
+                  
+//                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
+//                     <span className="flex items-center text-white text-[9px] sm:text-[10px] font-bold tracking-wider bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/30">
+//                       <FaMapMarkerAlt className="mr-2 text-indigo-300" /> {item.tag}
+//                     </span>
+//                   </div>
+//                 </div>
+//               );
+//             })}
+//           </section>
+
+//           {/* 旅遊心得區塊 */}
+//           <section className="mb-20">
+//             <div className="group relative bg-slate-50 dark:bg-slate-800/40 rounded-[2rem] sm:rounded-[2.5rem] p-8 sm:p-16 overflow-hidden border border-slate-100 dark:border-slate-800 transition-all duration-500">
+//               <div 
+//                 className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 bg-cover bg-center pointer-events-none"
+//                 style={{ backgroundImage: "url('/a1.jpg')" }}
+//               ></div>
+//               <FaQuoteLeft className="absolute top-6 left-6 sm:top-8 sm:left-8 text-indigo-100 dark:text-indigo-900/30 text-4xl sm:text-6xl" />
+//               <div className="relative z-10">
+//                 <h3 className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] mb-4 sm:mb-6">
+//                   Travel Reflection
+//                 </h3>
+//                 <p className="text-xl sm:text-3xl font-medium text-slate-800 dark:text-slate-200 leading-snug italic">
+//                   {t.reflection}
+//                 </p>
+//               </div>
+//             </div>
+//           </section>
+
+//           {/* Footer */}
+//           <footer className="pt-10 border-t border-slate-100 dark:border-slate-800 text-center">
+//             <p className="text-[10px] font-bold text-slate-400 dark:text-slate-600 tracking-[0.4em] uppercase">
+//               Data Driven • Culture Inspired
+//             </p>
+//           </footer>
+//         </div>
+//       </main>
+//     </div>
+//   );
+// }
+
 "use client"
 
 import Menu from "@/component/Menu"
-import Link from "next/link"; 
-import { FaChevronLeft, FaGlobeAmericas, FaMapMarkerAlt, FaQuoteLeft } from "react-icons/fa"; 
+import Link from "next/link"
+import { FaChevronLeft, FaGlobeAmericas, FaMapMarkerAlt, FaQuoteLeft } from "react-icons/fa"
 import { useLang } from "@/component/LanguageProvider"
 import { translations } from "@/component/languageData"
 
@@ -508,11 +625,12 @@ export default function AboutPage() {
   const { lang } = useLang();
   const t = translations[lang as keyof typeof translations].about;
 
+  // 1. 嚴格對應檔案格式：a1, a2 為 .jpg / 其餘為 .JPEG
   const photoData = [
     { src: "/a1.jpg", tag: "Sydney, Australia" },
     { src: "/a2.jpg", tag: "Sydney, Australia" },
     { src: "/a3.JPEG", tag: "Tokyo, Japan" },
-    { src: "/a4.JPEG", tag: "LA, US" }, 
+    { src: "/a4.JPEG", tag: "LA, US" },
     { src: "/a5.JPEG", tag: "NY, US" },
     { src: "/a6.JPEG", tag: "Seoul, South Korea" },
     { src: "/a7.JPEG", tag: "Seoul, South Korea" },
@@ -530,18 +648,16 @@ export default function AboutPage() {
 
       <main className="flex-grow overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar relative">
         
-        {/* 手機版專用返回按鈕：只有在 sm 以下顯示 */}
+        {/* 手機版返回按鈕 */}
         <Link 
           href="/" 
-          className="sm:hidden fixed top-4 left-4 z-50 p-3 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-full shadow-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 active:scale-95 transition-transform"
+          className="sm:hidden fixed top-4 left-4 z-50 p-3 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-full shadow-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 active:scale-95"
         >
           <FaChevronLeft size={20} />
         </Link>
 
-        {/* 內距調整：手機版增加頂部空間給返回按鈕 */}
         <div className="max-w-5xl mx-auto px-6 sm:px-12 py-16 sm:py-20 w-full">
           
-          {/* Header Section */}
           <header className="mb-16">
             <div className="inline-flex items-center px-3 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
               <FaGlobeAmericas className="mr-2" /> {t.tag}
@@ -554,24 +670,17 @@ export default function AboutPage() {
             </p>
           </header>
 
-          {/* 九宮格照片區 */}
           <section className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-16">
             {photoData.map((item, idx) => {
               const isA4 = idx === 3;
               return (
-                <div 
-                  key={idx} 
-                  className="group relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] bg-slate-100 dark:bg-slate-800 transition-all duration-500 hover:shadow-xl aspect-square"
-                >
+                <div key={idx} className="group relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] bg-slate-100 dark:bg-slate-800 aspect-square shadow-sm">
                   <img 
                     src={item.src} 
                     alt={item.tag}
-                    className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110
-                      ${isA4 ? "object-left" : "object-center"}
-                    `}
+                    className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${isA4 ? "object-left" : "object-center"}`}
                     style={isA4 ? { objectPosition: '60% center' } : {}} 
                   />
-                  
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
                     <span className="flex items-center text-white text-[9px] sm:text-[10px] font-bold tracking-wider bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/30">
                       <FaMapMarkerAlt className="mr-2 text-indigo-300" /> {item.tag}
@@ -582,30 +691,19 @@ export default function AboutPage() {
             })}
           </section>
 
-          {/* 旅遊心得區塊 */}
           <section className="mb-20">
-            <div className="group relative bg-slate-50 dark:bg-slate-800/40 rounded-[2rem] sm:rounded-[2.5rem] p-8 sm:p-16 overflow-hidden border border-slate-100 dark:border-slate-800 transition-all duration-500">
-              <div 
-                className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 bg-cover bg-center pointer-events-none"
-                style={{ backgroundImage: "url('/a1.JPEG')" }}
-              ></div>
+            <div className="group relative bg-slate-50 dark:bg-slate-800/40 rounded-[2rem] sm:rounded-[2.5rem] p-8 sm:p-16 overflow-hidden border border-slate-100 dark:border-slate-800 transition-all">
+              <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 bg-cover bg-center pointer-events-none" style={{ backgroundImage: "url('/a1.jpg')" }}></div>
               <FaQuoteLeft className="absolute top-6 left-6 sm:top-8 sm:left-8 text-indigo-100 dark:text-indigo-900/30 text-4xl sm:text-6xl" />
               <div className="relative z-10">
-                <h3 className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] mb-4 sm:mb-6">
-                  Travel Reflection
-                </h3>
-                <p className="text-xl sm:text-3xl font-medium text-slate-800 dark:text-slate-200 leading-snug italic">
-                  {t.reflection}
-                </p>
+                <h3 className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] mb-4 sm:mb-6">Travel Reflection</h3>
+                <p className="text-xl sm:text-3xl font-medium text-slate-800 dark:text-slate-200 leading-snug italic">{t.reflection}</p>
               </div>
             </div>
           </section>
 
-          {/* Footer */}
-          <footer className="pt-10 border-t border-slate-100 dark:border-slate-800 text-center">
-            <p className="text-[10px] font-bold text-slate-400 dark:text-slate-600 tracking-[0.4em] uppercase">
-              Data Driven • Culture Inspired
-            </p>
+          <footer className="pt-10 border-t border-slate-100 dark:border-slate-800 text-center text-[10px] font-bold text-slate-400 uppercase tracking-[0.4em]">
+            Data Driven • Culture Inspired
           </footer>
         </div>
       </main>
