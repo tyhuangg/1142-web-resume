@@ -36,34 +36,14 @@ export const translations = {
       btn_about: "更多關於我"
     },
     about: {
-      tag: "Personal Traits & Interests",
+      tag: "Personal Spirit",
       title: "關於我 About",
-      intro: "在數據的世界裡，我追求精準與真理；在生活的維度中，我擁抱多元與跨界。這是我，一個不斷進化的數據探索者。",
-      traits: [
-        {
-          title: "跨文化觀察者 | Explorer",
-          content: "在南卡羅來納大學（USC）交換的經驗，讓我學會從全球化視角觀察商業模式。我熱愛旅遊，因為每一座城市都是一組獨特的數據集，等待被解讀。",
-          tags: ["旅遊", "跨文化", "觀察"],
-          bgClass: "bg-indigo-50/50 dark:bg-indigo-900/20"
-        },
-        {
-          title: "多語學習者 | Polyglot",
-          content: "我享受學習新語言的邏輯。除了中文與英文，我也持續探索其他語言。這份對「編碼與解碼」的熱情，讓我能快速上手各種程式語言與分析工具。",
-          tags: ["英文", "系統化學習", "邏輯"],
-          bgClass: "bg-emerald-50/50 dark:bg-emerald-900/20"
-        },
-        {
-          title: "對未知的渴望 | NASA Dream",
-          content: "從小對太空與黑洞的著迷，形塑了我探索未知、追求真理的性格。我將這份好奇心轉化為對數據深處洞察的追求，致力於發現隱藏在數字後的商業真相。",
-          tags: ["NASA 愛好者", "好奇心", "求真"],
-          bgClass: "bg-slate-100/80 dark:bg-slate-800/50"
-        },
-        {
-          title: "律動與表達 | Vogue & Dance",
-          content: "Vogue 與 K-pop 舞蹈是我平衡理性與感性的方式。舞蹈教會我精準控制與節奏感，這讓我即便在面對海量數據時，也能保持冷靜、掌握重點脈絡。",
-          tags: ["Vogue", "表演", "專注"],
-          bgClass: "bg-pink-50/50 dark:bg-pink-900/20"
-        }
+      intro: "我是一個熱愛旅遊與文化碰撞的觀察者。對我而言，每一座城市都是一組獨特的數據集，在異國街頭的觀察與交流，是我理解世界、訓練洞察力最直觀的方式。",
+      // 這裡放妳想展示的 9 張照片路徑
+      photos: [
+        "/a1.JPEG", "/a2.JPEG", "/a3.JPEG", 
+        "/a4.JPEG", "/a5.JPEG", "/a6.JPEG", 
+        "/a7.JPEG", "/a8.JPEG", "/a9.JPEG"
       ]
     },
     resume: {
@@ -152,16 +132,22 @@ export const translations = {
       intro: "結合使用者研究與前端技術，打造美觀且具備良好互動體驗的數位產品。",
       items: [
         {
-          title: "OpenNCCU | 產品 UX 優化",
-          type: "Product Design / UX Research",
-          tech: ["Figma", "React", "User Testing"],
-          desc: "重新設計校園全人系統，透過 400+ 份問卷與易用性測試，將雜亂的資訊結構化並轉化為高保真原型。"
+          title: "DCT 17th Official Website",
+          type: "Official Website / Web Architecture",
+          tech: ["Next.js", "Tailwind CSS", "Vercel"],
+          desc: "為政大數位內容第 17 屆畢業展架設官方網站，負責前端介面開發與動態特效優化，確保在不同裝置上的流暢展示。"
         },
         {
-          title: "Black Hole Technology",
-          type: "Web Development",
-          tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
-          desc: "使用 Next.js 開發的互動式敘事網站，結合 Framer Motion 打造探索企業 AI 陰謀論的沈浸式體驗。"
+          title: "公館圓環遊戲專案 | Roundabout Game",
+          type: "JS Game Development",
+          tech: ["JavaScript", "HTML5 Canvas", "Game Logic"],
+          desc: "使用原生 JavaScript 打造的網頁互動遊戲，以公館圓環為場景設計遊戲機制，實作碰撞偵測與積分系統。"
+        },
+        {
+          title: "資安系統專題 | Cowrie Log Helper",
+          type: "Cybersecurity Tool / Log Analysis",
+          tech: ["Python", "Security Analysis", "Log Management"],
+          desc: "政大資管系畢業專題。開發輔助管理 Cowrie Honeypot 日誌的工具，提升資安分析人員處理攻擊紀錄的效率。"
         }
       ]
     }

@@ -905,21 +905,25 @@ export default function ResumePage() {
               {t.section_projects}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {t.projects.map((proj: any, idx: number) => (
-                <div key={idx} className="p-8 bg-slate-50 dark:bg-slate-800/20 rounded-3xl border border-transparent dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all group">
-                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 group-hover:text-blue-700 dark:group-hover:text-blue-400">
-                    {proj.title}
-                  </h3>
-                  <div className="flex justify-between text-[10px] font-bold text-blue-500 dark:text-blue-400 mb-4 uppercase tracking-wider">
-                    <span>{proj.role}</span>
-                    <span className="text-slate-400 dark:text-slate-500">{proj.period}</span>
-                  </div>
-                  {proj.points.map((p: string, i: number) => (
-                    <p key={i} className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{p}</p>
-                  ))}
-                </div>
-              ))}
+        {t.projects.map((proj: any, idx: number) => (
+          <a 
+            key={idx} 
+            href="/projects/data" // 直接導向內部 Data 專案頁面
+            className="p-8 bg-slate-50 dark:bg-slate-800/20 rounded-3xl border border-transparent dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-900 transition-all group block"
+          >
+            <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 group-hover:text-blue-700 dark:group-hover:text-blue-400">
+              {proj.title}
+            </h3>
+            <div className="flex justify-between text-[10px] font-bold text-blue-500 dark:text-blue-400 mb-4 uppercase tracking-wider">
+              <span>{proj.role}</span>
+              <span className="text-slate-400">{proj.period}</span>
             </div>
+            {proj.points.map((p: string, i: number) => (
+              <p key={i} className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{p}</p>
+            ))}
+          </a>
+        ))}
+      </div>
           </section>
 
           {/* 4. 教育背景 - NCCU & UofSC 加入背景 Hover 10% */}

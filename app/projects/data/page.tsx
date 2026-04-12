@@ -247,24 +247,118 @@
 
 
 
-"use client"
+// "use client"
 
+// import Menu from "@/component/Menu"
+// import { useLang } from "@/component/LanguageProvider"
+// import { translations } from "@/component/languageData"
+// import { FaChartBar, FaBullseye } from "react-icons/fa"
+
+// export default function DataProjects() {
+//   const { lang } = useLang();
+//   const t = translations[lang as keyof typeof translations].projects;
+
+//   return (
+//     <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500">
+//       <aside className="w-[280px] flex-shrink-0 h-full">
+//         <Menu />
+//       </aside>
+      
+//       <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-500 custom-scrollbar flex flex-col">
+//         <div className="max-w-4xl mx-auto px-12 py-20 w-full">
+          
+//           <header className="mb-16">
+//             <div className="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold rounded-full mb-6 tracking-widest uppercase">
+//               {t.data_tag}
+//             </div>
+//             <h1 className="text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">
+//               {t.data_title}
+//             </h1>
+//             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
+//               {t.data_intro}
+//             </p>
+//           </header>
+          
+//           <div className="grid grid-cols-1 gap-10">
+//             {t.items.map((proj: any, idx: number) => (
+//               <div 
+//                 key={idx} 
+//                 className="group relative p-10 bg-slate-50 dark:bg-slate-800/40 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:border-blue-200 dark:hover:border-blue-800"
+//               >
+//                 <div className="flex justify-between items-start mb-8">
+//                   <div className="space-y-2">
+//                     <span className="flex items-center text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-widest">
+//                       <FaChartBar className="mr-2" /> {proj.category}
+//                     </span>
+//                     <h2 className="text-3xl font-bold text-slate-800 dark:text-white mt-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+//                       {proj.title}
+//                     </h2>
+//                   </div>
+//                   <div className="text-right">
+//                     <span className="flex items-center text-xs font-black text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/50 px-4 py-2 rounded-xl">
+//                       <FaBullseye className="mr-2" /> {t.impact_label} {proj.impact}
+//                     </span>
+//                   </div>
+//                 </div>
+
+//                 <p className="text-slate-600 dark:text-slate-400 mb-10 leading-relaxed text-base">
+//                   {proj.description}
+//                 </p>
+
+//                 <div className="flex flex-wrap gap-3 pt-6 border-t border-slate-200/50 dark:border-slate-700/50">
+//                   {proj.tools.map((tool: string) => (
+//                     <span 
+//                       key={tool} 
+//                       className="px-4 py-1.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-500 dark:text-slate-300 text-[11px] font-bold rounded-lg tracking-wide uppercase"
+//                     >
+//                       {tool}
+//                     </span>
+//                   ))}
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </main>
+//     </div>
+//   )
+// }
+"use client"
 import Menu from "@/component/Menu"
 import { useLang } from "@/component/LanguageProvider"
 import { translations } from "@/component/languageData"
-import { FaChartBar, FaBullseye } from "react-icons/fa"
+import { FaChartBar, FaBullseye, FaExternalLinkAlt } from "react-icons/fa"
+import ImageCarousel from "@/component/ImageCarousel"
 
 export default function DataProjects() {
   const { lang } = useLang();
   const t = translations[lang as keyof typeof translations].projects;
 
+  // 1. 定義每個專案的照片與連結 (這段必須放在 return 之前)
+  const getProjectConfig = (title: string) => {
+    const upperTitle = title.toUpperCase();
+    if (upperTitle.includes("IBM")) {
+      return {
+        link: "https://github.com/tyhuangg/Fintech_Crypto-Fraud-Detection-Project",
+        images: ["/4.jpg", "/5.jpg", "/6.jpg", "/7.jpg"] 
+      };
+    }
+    if (upperTitle.includes("清大") || upperTitle.includes("NTHU")) {
+      return {
+        link: "", // 拿掉 Canva 連結
+        images: ["/8.jpg", "/9.jpg", "/10.jpg", "/11.jpg", "/12.jpg", "/13.jpg"]
+      };
+    }
+    return { link: "", images: [] };
+  };
+
   return (
-    <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500">
+    <div className="flex h-screen w-full bg-white dark:bg-slate-900 transition-colors duration-500 font-sans">
       <aside className="w-[280px] flex-shrink-0 h-full">
         <Menu />
       </aside>
       
-      <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-500 custom-scrollbar flex flex-col">
+      <main className="flex-grow h-screen overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-500 custom-scrollbar flex flex-col">
         <div className="max-w-4xl mx-auto px-12 py-20 w-full">
           
           <header className="mb-16">
@@ -274,49 +368,69 @@ export default function DataProjects() {
             <h1 className="text-5xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">
               {t.data_title}
             </h1>
-            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
-              {t.data_intro}
-            </p>
           </header>
           
-          <div className="grid grid-cols-1 gap-10">
-            {t.items.map((proj: any, idx: number) => (
-              <div 
-                key={idx} 
-                className="group relative p-10 bg-slate-50 dark:bg-slate-800/40 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:border-blue-200 dark:hover:border-blue-800"
-              >
-                <div className="flex justify-between items-start mb-8">
-                  <div className="space-y-2">
-                    <span className="flex items-center text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-widest">
-                      <FaChartBar className="mr-2" /> {proj.category}
-                    </span>
-                    <h2 className="text-3xl font-bold text-slate-800 dark:text-white mt-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                      {proj.title}
-                    </h2>
+          <div className="grid grid-cols-1 gap-12">
+            {t.items.map((proj: any, idx: number) => {
+              const config = getProjectConfig(proj.title);
+              
+              return (
+                <div 
+                  key={idx} 
+                  className="group relative p-10 bg-slate-50 dark:bg-slate-800/40 rounded-[2rem] border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:border-blue-400 dark:hover:border-blue-800"
+                >
+                  {/* 2. 插入輪播圖組件 */}
+                  {config.images.length > 0 && (
+                    <div className="mb-8">
+                      <ImageCarousel images={config.images} />
+                    </div>
+                  )}
+
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="space-y-1">
+                      <span className="flex items-center text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-widest">
+                        <FaChartBar className="mr-2" /> {proj.category}
+                      </span>
+                      
+                      {/* 如果有連結才顯示 a 標籤，否則只顯示標題 */}
+                      {config.link ? (
+                        <a href={config.link} target="_blank" rel="noopener noreferrer" className="flex items-center group/link">
+                          <h2 className="text-3xl font-bold text-slate-800 dark:text-white group-hover/link:text-blue-600 transition-colors">
+                            {proj.title}
+                          </h2>
+                          <FaExternalLinkAlt className="ml-3 text-sm opacity-50 group-hover/link:opacity-100 transition-opacity" />
+                        </a>
+                      ) : (
+                        <h2 className="text-3xl font-bold text-slate-800 dark:text-white">
+                          {proj.title}
+                        </h2>
+                      )}
+                    </div>
+
+                    <div className="text-right">
+                      <span className="flex items-center text-xs font-black text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/50 px-4 py-2 rounded-xl">
+                        <FaBullseye className="mr-2" /> {t.impact_label} {proj.impact}
+                      </span>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <span className="flex items-center text-xs font-black text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/50 px-4 py-2 rounded-xl">
-                      <FaBullseye className="mr-2" /> {t.impact_label} {proj.impact}
-                    </span>
+
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base mb-8">
+                    {proj.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 pt-6 border-t border-slate-200/50 dark:border-slate-700/50">
+                    {proj.tools.map((tool: string) => (
+                      <span 
+                        key={tool} 
+                        className="px-3 py-1 bg-white dark:bg-slate-700 text-slate-500 dark:text-slate-300 text-[10px] font-bold rounded-lg border border-slate-200 dark:border-slate-600 uppercase tracking-wider"
+                      >
+                        {tool}
+                      </span>
+                    ))}
                   </div>
                 </div>
-
-                <p className="text-slate-600 dark:text-slate-400 mb-10 leading-relaxed text-base">
-                  {proj.description}
-                </p>
-
-                <div className="flex flex-wrap gap-3 pt-6 border-t border-slate-200/50 dark:border-slate-700/50">
-                  {proj.tools.map((tool: string) => (
-                    <span 
-                      key={tool} 
-                      className="px-4 py-1.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-500 dark:text-slate-300 text-[11px] font-bold rounded-lg tracking-wide uppercase"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </main>
