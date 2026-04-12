@@ -476,7 +476,7 @@ export default function AboutPage() {
                   Travel Reflection
                 </h3>
                 <p className="text-2xl md:text-3xl font-medium text-slate-800 dark:text-slate-200 leading-snug italic">
-                  「走過的國家越多，越發現數據背後的溫度。在雪梨觀察生活的餘裕、在紐約感受競爭的脈搏，這些文化衝擊最終都轉化成我分析問題時，更溫柔且多元的視角。」
+                  {t.reflection}
                 </p>
               </div>
             </div>
