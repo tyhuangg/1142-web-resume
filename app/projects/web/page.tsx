@@ -788,6 +788,8 @@ export default function WebProjects() {
               const lowerTitle = proj.title.toLowerCase();
               const isDCT = lowerTitle.includes("17th");
               const isGame = lowerTitle.includes("公館") || lowerTitle.includes("roundabout");
+              const isSecurity = lowerTitle.includes("資安") || lowerTitle.includes("cowrie");
+
 
               return (
                 <div 
@@ -820,11 +822,31 @@ export default function WebProjects() {
                         ></iframe>
                       </div>
                     )}
+
+                    {/* 3. 資安專案: 本地影片 */}
+                    {isSecurity && (
+                      <div className="relative w-full aspect-video bg-black flex items-center justify-center">
+                        <video 
+                          className="w-full h-full object-contain"
+                          controls
+                          preload="metadata"
+                          playsInline
+                          muted       // 增加這一行，提高相容性
+                          // autoPlay // 如果需要自動播放再加
+                        >
+                          {/* 注意：.mov 的 type 通常是 video/quicktime */}
+                          {/* <source src="/videos/security-demo.mp4" type="video/quicktime" /> */}
+                          <source src="/security-demo-compressed.mp4" type="video/mp4" /> 
+                          您的瀏覽器不支援影片播放。
+                        </video>
+                      </div>
+                    )}
                   </div>
 
                   {/* --- 文字資訊區 --- */}
                   <div className="flex justify-between items-start mb-6">
                     <div className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-50 dark:bg-purple-900/40 rounded-xl sm:rounded-2xl flex items-center justify-center text-purple-600 dark:text-purple-400 mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+                      {/* {isDCT ? <FaLaptopCode size={24} /> : isGame ? <FaYoutube size={24} /> : <FaShieldAlt size={24} />} */}
                       {isDCT ? <FaLaptopCode size={24} /> : isGame ? <FaYoutube size={24} /> : <FaShieldAlt size={24} />}
                     </div>
                     <a href={getWebLink(proj.title)} target="_blank" rel="noopener noreferrer">
